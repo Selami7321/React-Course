@@ -1,0 +1,233 @@
+/* src/App.css */
+:root {
+  --primary-color: #3a7cfd;
+  --background-color: #fafafa;
+  --todo-bg: #ffffff;
+  --border-color: #e3e4f1;
+  --completed-text: #d1d2da;
+  --text-color: #494c6b;
+  --shadow-color: rgba(194, 195, 214, 0.5);
+  --dark-text: #393a4b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #171823;
+    --todo-bg: #25273d;
+    --border-color: #393a4b;
+    --completed-text: #4d5067;
+    --text-color: #c8cbe7;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --dark-text: #c8cbe7;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.todo-app {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.app-header {
+  text-align: center;
+  padding: 48px 0 40px;
+}
+
+.app-header h1 {
+  font-size: 40px;
+  letter-spacing: 15px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.todo-container {
+  background-color: var(--todo-bg);
+  border-radius: 5px;
+  box-shadow: 0 35px 50px -15px var(--shadow-color);
+  margin-bottom: 40px;
+}
+
+.todo-input-container {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.circle-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  margin-right: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-icon.completed {
+  background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+  border: none;
+}
+
+.check-icon {
+  color: white;
+  font-size: 12px;
+}
+
+.todo-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 18px;
+  color: var(--text-color);
+  caret-color: var(--primary-color);
+}
+
+.todo-input::placeholder {
+  color: var(--completed-text);
+}
+
+.todo-list {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 18px;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+  word-break: break-word;
+  padding-right: 12px;
+}
+
+.todo-item.completed .todo-text {
+  color: var(--completed-text);
+  text-decoration: line-through;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--completed-text);
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.todo-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  color: var(--dark-text);
+}
+
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  color: var(--completed-text);
+  font-size: 14px;
+}
+
+.filters {
+  display: flex;
+  gap: 18px;
+}
+
+.filters button, .clear-btn {
+  background: none;
+  border: none;
+  color: var(--completed-text);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.filters button:hover, .clear-btn:hover {
+  color: var(--dark-text);
+}
+
+.filters button.active {
+  color: var(--primary-color);
+}
+
+.mobile-filters {
+  display: none;
+  background-color: var(--todo-bg);
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 16px;
+  justify-content: center;
+  gap: 18px;
+  box-shadow: 0 35px 50px -15px var(--shadow-color);
+}
+
+.instruction {
+  text-align: center;
+  color: var(--completed-text);
+  font-size: 14px;
+  padding: 40px 0 48px;
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    padding: 40px 0 48px;
+  }
+  
+  .app-header h1 {
+    font-size: 30px;
+  }
+  
+  .todo-input-container {
+    padding: 14px 20px;
+  }
+  
+  .todo-item {
+    padding: 16px 20px;
+  }
+  
+  .todo-footer {
+    position: relative;
+  }
+  
+  .filters {
+    display: none;
+  }
+  
+  .mobile-filters {
+    display: flex;
+  }
+  
+  .instruction {
+    padding: 30px 0 40px;
+  }
+}
